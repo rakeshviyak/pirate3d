@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{web_name}} - {{title}}</title>
+
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	-->
+	<meta name="keywords" content="3D Printer,Pirate3D,Buccaneer,Cartridges"/>
+	<meta name="description" content="{{description}}"/>
+	<!-- BootStrap-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
+	
+	<link rel="stylesheet/less" type="text/css" href="/static/less/bootstrap.less" />
+	<script src="/static/js/less-1.4.1.min.js" type="text/javascript"></script>
+	
+	<!--Special CSS-->
+	<link type="text/css" rel="stylesheet" href="/static/css/base.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/bootstrap-select.min.css" />
+	
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="../../assets/js/html5shiv.js"></script>
+	<script src="../../assets/js/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+	<div class="rows">
+		<div class="col-md-3">
+			<img src="https://fbcdn-sphotos-d-a.akamaihd.net/hphotos-ak-prn1/559984_134810333352595_399086437_n.jpg" class="img-responsive" alt="Pirate3D Img"/>
+			{% include 'cart.html' %}
+		</div>
+		<div class="col-md-5">
+			<img src="http://pirate3d.com/launch-assets/images/product.jpg" class="img-responsive" alt="{{description}}"/>
+		</div>
+		<div class="col-md-4" id="tools">
+			<div class="rows">
+				<div class="btn-group btn-block" data-toggle="buttons">
+					<button class="btn btn-dec btn-default col-md-6 col-xs-6 zero-border-radius" href="#buc" data-toggle="tab">
+						<input type="radio" name="options" id="Buccaneer">Buccaneer</button>
+					<button class="btn btn-dec btn-default col-md-6 col-xs-6 zero-border-radius active" href="#car" data-toggle="tab">
+						<input type="radio" name="options" id="Cartridges">Cartridges</button>
+				</div>
+			</div>
+			<div class="tab-content">
+				{% include 'printer.html' %}
+				{% include 'cartridge.html' %}
+			</div>
+
+			<div class="rows" >
+				<div class="highlight zero-border-radius">
+					<button class="btn btn-primary btn-dec btn-block" id="buy_now">Buy Now</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!--Javascript -->
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="/static/js/helper_functions.js"></script>
+	<script type="text/javascript" src="/static/js/base.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+.zero-border-radius{
+	border-radius: 0px;
+}
+
+
+div{text-decoration: none !important}
+
+#tools{
+	padding-right: 0px;
+}
+
+.btn-dec{
+	padding: 15px 12px;
+	font-weight: bold;
+}
+
+.highlight {
+    padding: 20px;
+    
+    background-color: rgb(247, 247, 249);
+    border-top: 2px solid rgb(225, 225, 232);
+}
+
+#tools .color-option-style-01 {
+    color: rgb(0, 70, 73);
+    cursor: pointer;
+    float: left;
+    font-size: 10px;
+    height: 50px;
+    margin: 0px 6px 4px 0px;
+    width: 75px;
+    padding: 0px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#summary_cart .color-option-style-01 {
+    color: rgb(0, 70, 73);
+    cursor: pointer;
+    float: left;
+    font-size: 10px;
+    height: 30px;
+    margin: 0px 6px 4px 0px;
+    width: 40px;
+    padding: 0px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#tools .color-option-style-01 > .selected {
+    background: url("/static/images/check-dark.png") no-repeat scroll 50% center transparent;
+    height: inherit;
+    position: absolute;
+    width: inherit;
+}
+
+#summary_cart .color-option-style-01 > .ABS {
+    background: url("/static/images/ABS.png") no-repeat scroll 50% center transparent;
+    height: inherit;
+    position: absolute;
+    width: inherit;
+}
+
+#summary_cart .color-option-style-01 > .PLA {
+    background: url("/static/images/PLA.png") no-repeat scroll 50% center transparent;
+    height: inherit;
+    position: absolute;
+    width: inherit;
+}
+
+#summary_cart .color-option-style-01 > .selected {
+    background: url("/static/images/remove-dark.png") no-repeat scroll 50% center transparent;
+    height: inherit;
+    position: absolute;
+    width: inherit;
+}
+
+.checkout-button {
+    background: none repeat scroll 0% 0% rgb(249, 249, 249);
+    border-top: thin solid rgb(227, 228, 229);
+    bottom: 0px;
+    position: fixed;
+    text-align: center;
+
+    right: 0px;
+    z-index: 10;
+    padding: 20px;
+}
+
