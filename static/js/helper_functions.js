@@ -10,7 +10,7 @@ function emptyCart(num){
 	if(num===0)
 		return "Cart is empty";
 	else
-		return num;
+		return toCurrency(num);
 }
 function toCurrency(num){
 	return '$'+num;
@@ -54,3 +54,8 @@ var hideAllPopovers = function() {
         $(this).popover('hide');
     });
 };
+
+function output(inp) {
+    $('#myModal').find('pre').text(inp);
+    $('#myModal').modal();
+}

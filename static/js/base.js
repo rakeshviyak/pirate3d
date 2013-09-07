@@ -5,15 +5,17 @@
 jQuery(document).ready(function(){
 
 	$('.selectpicker').selectpicker();
-
+	$('#n_c_info').tooltip({
+		container:'body',
+		placement:'right',
+	});
 	//cartridge color mouseover change
 	$(document).on('mouseover','.color-option-style-01',function(){
+		$(this).children('span').width($(this).width());
 		$(this).children('span').addClass('selected');
 	}).on('mouseleave','.color-option-style-01',function(){
 		$(this).children('span').removeClass('selected');
 	});
-
-	
 	//printer unit number change
 	$('#printer_unit').change(function(e){
 		$this=$(e.target);
@@ -23,6 +25,7 @@ jQuery(document).ready(function(){
 			$('#printer_update_order').css({display:'',});
 		}
 	});
+
 	$('#printer_unit').trigger('change');
 
 	//print order button click
@@ -46,8 +49,21 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	
-	
+	//slider
+	$('.slider').click(function(){
+		var slider_class=$(this).find('.slider_img').attr('class');
+		if (slider_class.indexOf("down")>=0){
+			$(this).find('.slider_img').attr('class',slider_class.replace('down','up'));
+		}
+		else{
+			$(this).find('.slider_img').attr('class',slider_class.replace('up','down'));
+		}
+	});
+
+	$('.buc,.car').click(function(){
+		$('.carousel').carousel('next');
+		$('.carousel').carousel('pause');
+	});
 	//choose cartridge type
 	
 	$('.cartridge_type').click(function(){
@@ -87,13 +103,13 @@ jQuery(document).ready(function(){
 		if (c_type.toLowerCase()=="pla")
 			active_pla="active";
 		if (abs==1 && pla==1){
-			popover_buttons='<div class="btn-group btn-group-xs" data-toggle="buttons"> \
+			popover_buttons='<div class="btn-group" data-toggle="buttons"> \
 				<label class="btn btn-default col-md-6 plaactive summary_cart '+active_pla+'"> \
 					<input type="radio" name="options" value="PLA">PLA</label>\
 				<label class="btn btn-default col-md-6 absactive summary_cart '+active_abs+'"> \
 					<input type="radio" name="options" value="ABS">ABS</label></div>';
 		}else{
-			popover_buttons=c_type;
+			popover_buttons='('+c_type+')';
 		}
 		popover_buttons=popover_buttons+'<input type="hidden" class="c_cartridge_price" value="'+c_price+'">'+
 							'<input type="hidden" class="c_cartridge_color" value="'+c_color+'">'+
@@ -103,10 +119,14 @@ jQuery(document).ready(function(){
 			placement: 'bottom',
 			html: 'true',
 			trigger:'manual',
-			content : '<a type="button" class="pull-right close">&times;</a><br>'+c_color+'($'+c_price+') - '+c_group+popover_buttons+
-						'<button class="btn btn-default remove_car_order" title="remove">Remove Order</button>',
+			
+			content : '<button class="btn btn-danger remove_car_order" title="remove">Remove Order</button> \
+						<a type="button" class="pull-right close">&times;</a><br>'+
+						c_color+'($'+c_price+') - '+c_group+' cartridges \n'+popover_buttons,
 			});
+
 		$('#display_cartridge').append(a);
+		a.children('span').width(a.width());
 		addItemPrice(c_price);
 		$(html).popover('show');
 	});
@@ -123,7 +143,7 @@ jQuery(document).ready(function(){
 		types=$(this).children('input').val();
 		$(this).parents('.popover').prev().children('span').removeClass('PLA').removeClass('ABS').addClass(types);
 		var content_extract=($('.summary_cart').removeClass('active','').parent().children().children('input[value='+types+']').parent().addClass('active').parent().parent().html());
-		// var extract=$('.summary_cart').parents('.popover-content').html();
+		
 
 		get_class=$(this).parents('.popover').prev();
 		(get_class).popover('destroy');
@@ -190,10 +210,17 @@ jQuery(document).ready(function(){
     });
 	
 	function buyerhandler(e){
+
 		if (e.error==1){
-			alert(e.message);
+			var alert_html='<div class="alert alert-warning"><a class="close" data-dismiss="alert" href="#">&times;</a> \
+			<strong>'+e.message+'</strong></div>';
+			$('#summary_cart').append(alert_html);
+			window.setTimeout(function() { $(".alert").alert('close'); }, 5000);
 		}else{
-			alert(e.message +"\n"+ e.cart);
+			var str=JSON.stringify(e.cart, undefined, 4);
+			$('#myModal').find('.modal_message').text(e.message);
+			output(str);
+
 		}
 	}
 });

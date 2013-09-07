@@ -2,58 +2,60 @@
 	<div class="container highlight zero-border-radius">
 		<div class="col-md-offset-2 col-md-8">
 			<div class="btn-group btn-block"  data-toggle="buttons">
-				<label class="btn btn-default col-md-6 cartridge_type" id="PLA">
+				<label class="btn btn-bkg btn-default col-md-6 col-xs-6 cartridge_type" id="PLA">
 					<input type="radio" name="options">PLA</label>
-				<label class="btn btn-default col-md-6 cartridge_type" id="ABS">
+				<label class="btn btn-bkg btn-default col-md-6 col-xs-6 cartridge_type" id="ABS">
 					<input type="radio" name="options">ABS</label>
 			</div>
 			<input type="hidden" id="cartridge_type" value="PLA">
-			<div class="rows text-muted text-center">Choose the type of plastic cartridges (ABS / PLA)</div>
+			<div class="rows text-muted text-center">Choose the type of plastic cartridges (ABS / PLA) 
+			</div>
 		</div>
 	</div>
-	<div class="rows highlight btn-link" onclick="$('#glowindark').slideToggle(); return false;" href="#">
+	<div class="rows highlight slider" onclick="$('#glowindark').slideToggle(); return false;">
 		<div class="media">
 			<a class="pull-left" href="#">
 				<img class="media-object" src="/static/images/glowindark.jpg" alt="woods"></a>
 			<div class="media-body">
 				<h4 class="media-heading">Glow in Dark Cartridges</h4>
-				Attractive glow in dark color - $15.0
+				Attractive glow in dark color - $15.
+				<span class="pull-right slider_img icon-chevron-down"></span>
 			</div>
 		</div>
 	</div>
 	<div class="container highlight c_types" id="glowindark" style="display: none;">
 		<input type="hidden" class="c_price" value="15">
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: red;box-shadow: 0 0 10px Red, 0 1px 0 rgba(255, 255, 255, 0.35) inset;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Red</p>
 		</div>
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: blue;box-shadow: 0 0 10px Blue, 0 1px 0 rgba(255, 255, 255, 0.35) inset;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Blue</p>
 		</div>
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: White;box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4) inset, 0px 0px 0px rgba(0, 0, 0, 0.3) inset,; 0px 0px 10px rgba(255, 255, 255, 0.3) inset, 0px 2px 4px rgba(0, 0, 0, 0.2);">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">White</p>
 		</div>
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: Green;box-shadow: 0 0 10px Green, 0 1px 0 rgba(255, 255, 255, 0.35) inset;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Green</p>
 		</div>
-		<div class="col-md-3 c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_PLA">
 			<p class="color-option-style-01" style="background: Yellow;box-shadow: 0 0 10px Yellow, 0 1px 0 rgba(255, 255, 255, 0.35) inset;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Yellow</p>
 		</div>
-		<div class="col-md-3 c_ABS">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS">
 			<p class="color-option-style-01" style="background: Violet;box-shadow: 0 0 10px Violet, 0 1px 0 rgba(255, 255, 255, 0.35) inset;">
 				<span class="check-space"></span>
 			</p>
@@ -61,19 +63,20 @@
 		</div>
 	</div>
 
-	<div class="rows highlight btn-link" onclick="$('#wood').slideToggle(); return false;" href="#">
+	<div class="rows highlight slider" onclick="$('#wood').slideToggle(); return false;">
 		<div class="media">
 			<a class="pull-left" href="#">
 				<img class="media-object" src="/static/images/rsz_woodprint.jpg" alt="woods"></a>
 			<div class="media-body">
 				<h4 class="media-heading">Wooden Cartridges</h4>
 				Vibrant wooden color - $15.0
-			</div>
+				<span class="pull-right slider_img icon-chevron-down"></span>
+		</div>
 		</div>
 	</div>
 	<div class="container highlight c_types" id="wood" style="display: none;">
 		<input type="hidden" class="c_price" value="15">
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: url(&quot;/static/images/wood.jpg&quot;);">
 				<span class="check-space"></span>
 			</p>
@@ -81,51 +84,50 @@
 		</div>
 	</div>
 
-	<div class="rows highlight btn-link" onclick="$('#cool').slideToggle(); return false;" href="#">
+	<div class="rows highlight slider" onclick="$('#cool').slideToggle(); return false;">
 		<div class="media">
 			<a class="pull-left" href="#">
 				<img class="media-object" src="/static/images/colors.jpg" alt="woods"></a>
 			<div class="media-body">
 				<h4 class="media-heading">Cool Cartridges</h4>
 				Cool colorful cartridges $12.0
-			</div>
-
+				<span class="pull-right slider_img icon-chevron-down"></span>
 		</div>
-
+		</div>
 	</div>
 	<div class="container highlight c_types" id="cool" style="display: none;">
 		<input type="hidden" class="c_price" value="12">
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: red;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Red</p>
 		</div>
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: blue;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Blue</p>
 		</div>
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: White;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">White</p>
 		</div>
-		<div class="col-md-3 c_ABS c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS c_PLA">
 			<p class="color-option-style-01" style="background: Green;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Green</p>
 		</div>
-		<div class="col-md-3 c_PLA">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_PLA">
 			<p class="color-option-style-01" style="background: Yellow;">
 				<span class="check-space"></span>
 			</p>
 			<p class="text-muted text-center">Yellow</p>
 		</div>
-		<div class="col-md-3 c_ABS">
+		<div class="col-md-3 col-xs-4 col-sm-3 c_ABS">
 			<p class="color-option-style-01" style="background: Violet;">
 				<span class="check-space"></span>
 			</p>
