@@ -13,11 +13,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+#import libraries
 import jinja2
 import os
 import webapp2
 
+#declaring jinja2 rendering path
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                autoescape = True)
@@ -35,9 +37,7 @@ class BaseHandler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
 
-
-
-
+#declaring app handlers using webapp2 framework
 app = webapp2.WSGIApplication([
     ('/', 'cart.CartHandler')
 ], debug=True)

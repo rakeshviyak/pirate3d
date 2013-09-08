@@ -4,18 +4,20 @@
 
 jQuery(document).ready(function(){
 
+	//initialize & adding javascript element to DOM
 	$('.selectpicker').selectpicker();
 	$('#n_c_info').tooltip({
 		container:'body',
 		placement:'right',
 	});
-	//cartridge color mouseover change
-	$(document).on('mouseover','.color-option-style-01',function(){
-		$(this).children('span').width($(this).width());
-		$(this).children('span').addClass('selected');
-	}).on('mouseleave','.color-option-style-01',function(){
-		$(this).children('span').removeClass('selected');
+
+
+	//adding printer, cartridge click functionality
+	$('.buc,.car').click(function(){
+		$('.carousel').carousel('next');
+		$('.carousel').carousel('pause');
 	});
+
 	//printer unit number change
 	$('#printer_unit').change(function(e){
 		$this=$(e.target);
@@ -25,12 +27,10 @@ jQuery(document).ready(function(){
 			$('#printer_update_order').css({display:'',});
 		}
 	});
-
 	$('#printer_unit').trigger('change');
 
-	//print order button click
+	//printer order button click
 	$('#printer_order,#printer_update_order').click(function(){
-		
 		var button_title=$(this).attr('title');
 		if(button_title=="order"){
 			removePrinterItem();
@@ -49,23 +49,7 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	//slider
-	$('.slider').click(function(){
-		var slider_class=$(this).find('.slider_img').attr('class');
-		if (slider_class.indexOf("down")>=0){
-			$(this).find('.slider_img').attr('class',slider_class.replace('down','up'));
-		}
-		else{
-			$(this).find('.slider_img').attr('class',slider_class.replace('up','down'));
-		}
-	});
-
-	$('.buc,.car').click(function(){
-		$('.carousel').carousel('next');
-		$('.carousel').carousel('pause');
-	});
-	//choose cartridge type
-	
+	//choose cartridge type (PLA/ABS)
 	$('.cartridge_type').click(function(){
 		var types=$(this).attr('id');
 		$('#cartridge_type').val(types);
@@ -81,7 +65,26 @@ jQuery(document).ready(function(){
 	//setup default value for cartridge
 	$('#PLA').click();
 
-	//select cartridge
+	//cartridge element slider actions
+	$('.slider').click(function(){
+		var slider_class=$(this).find('.slider_img').attr('class');
+		if (slider_class.indexOf("down")>=0){
+			$(this).find('.slider_img').attr('class',slider_class.replace('down','up'));
+		}
+		else{
+			$(this).find('.slider_img').attr('class',slider_class.replace('up','down'));
+		}
+	});
+
+	//cartridge color mouseover change
+	$(document).on('mouseover','.color-option-style-01',function(){
+		$(this).children('span').width($(this).width());
+		$(this).children('span').addClass('selected');
+	}).on('mouseleave','.color-option-style-01',function(){
+		$(this).children('span').removeClass('selected');
+	});
+
+	//cartridge order button click
 	$('#car .color-option-style-01').on('click',function(){
 		var c_type= $('#cartridge_type').val();
 		var c_price=$(this).parent().siblings('.c_price').val();
@@ -130,7 +133,8 @@ jQuery(document).ready(function(){
 		addItemPrice(c_price);
 		$(html).popover('show');
 	});
-
+	
+	//cartridge cart summary popover
 	$(document).on('click','#cart_cartridge .color-option-style-01',function(e){
 		$('#cart_cartridge .color-option-style-01').not(this).each(function() {
 			$(this).popover('hide');
@@ -138,13 +142,20 @@ jQuery(document).ready(function(){
 		$(this).popover('show');
 	});
 
+	//cartridge popover close functionality
+	$(document).on('click', function(event) {
+		var target = $(event.target); // One jQuery object instead of 3
+		// Compare length with an integer rather than with negation
+		if ( ! target.hasClass('.color-option-style-01') && target.parent('.color-option-style-01').length === 0 && target.parent('.popover').length === 0) {
+			hideAllPopovers();
+		}
+	});
 
+	//cartridge cart summary change cartridge type (PLA/ABS)
 	$(document).on('click', '.summary_cart', function (evente) {
 		types=$(this).children('input').val();
 		$(this).parents('.popover').prev().children('span').removeClass('PLA').removeClass('ABS').addClass(types);
 		var content_extract=($('.summary_cart').removeClass('active','').parent().children().children('input[value='+types+']').parent().addClass('active').parent().parent().html());
-		
-
 		get_class=$(this).parents('.popover').prev();
 		(get_class).popover('destroy');
 		(get_class).popover({
@@ -156,6 +167,7 @@ jQuery(document).ready(function(){
 		(get_class).popover('show');
 	});
 
+	//cartridge cart summary remove order
 	$(document).on('click', '.remove_car_order', function (evente) {
 		price=$(this).siblings('.c_cartridge_price').val();
 		removeItem(price);
@@ -165,18 +177,7 @@ jQuery(document).ready(function(){
 		$(get_class).remove();
 	});
 
-
-
-
-	$(document).on('click', function(event) {
-    var target = $(event.target); // One jQuery object instead of 3
-
-    // Compare length with an integer rather than with negation
-    if ( ! target.hasClass('.color-option-style-01') && target.parent('.color-option-style-01').length === 0 && target.parent('.popover').length === 0) {
-        hideAllPopovers();
-		}
-	});
-
+	//buynow functionality
 	$('#buy_now').on('click', function(){
 		var i_group="",i_color="",i_price="",i_category="";
 		$('#display_cartridge .color-option-style-01').each(function() {
@@ -208,19 +209,4 @@ jQuery(document).ready(function(){
 			success: buyerhandler,
 		});
     });
-	
-	function buyerhandler(e){
-
-		if (e.error==1){
-			var alert_html='<div class="alert alert-warning"><a class="close" data-dismiss="alert" href="#">&times;</a> \
-			<strong>'+e.message+'</strong></div>';
-			$('#summary_cart').append(alert_html);
-			window.setTimeout(function() { $(".alert").alert('close'); }, 5000);
-		}else{
-			var str=JSON.stringify(e.cart, undefined, 4);
-			$('#myModal').find('.modal_message').text(e.message);
-			output(str);
-
-		}
-	}
 });

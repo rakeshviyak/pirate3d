@@ -1,10 +1,13 @@
-from main import BaseHandler
-
+# import libraries
 import logging
 import strings
 import json
 
+# import modules from project
+from main import BaseHandler
+
 def csvtolist(a):
+    """convert csv to list and remove the last comma from the right"""
     return a.rstrip(',').split(',')
 
 class CartHandler(BaseHandler):
@@ -61,5 +64,4 @@ class CartHandler(BaseHandler):
         #send json as its output
         cart_json=json.dumps({"error":error,"message":message,"cart":total})  
         self.response.headers["Content-Type"] = "application/json; charset=UTF-8"
-        self.response.out.write(cart_json)    
-
+        self.response.out.write(cart_json)

@@ -3,11 +3,9 @@
 <head>
 	<title>{{web_name}} - {{title}}</title>
 
-	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="keywords" content="3D Printer,Pirate3D,Buccaneer,Cartridges"/>
 	<meta name="description" content="{{description}}"/>
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- BootStrap-->
@@ -17,56 +15,54 @@
 	
 	<!--base CSS-->
 	<link type="text/css" rel="stylesheet" href="/static/css/base.css" />
-	
-	
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="../../assets/js/html5shiv.js"></script>
 	<script src="../../assets/js/respond.min.js"></script>
 	<![endif]-->
-
 </head>
 <body>
-
 	<div class="rows" id="base">
+		<!-- Logo and cart summary column -->
 		<div class="col-md-3 col-sm-6">
-			<img src="/static/images/logo_web.jpg" class="img-responsive" alt="Pirate3D Img"/>
+			<img src="/static/images/logo_web.jpg" class="img-responsive" alt="Pirate3D Img" width="480" height="480"/>
 			{% include 'cart.html' %}
 		</div>
-
+		<!-- Image selecter column -->
 		<div class="col-md-5 visible-md visible-lg" id="img_carousal">
 			<div class="carousel slide">
 		        <div class="carousel-inner">
-					<div class="item">
-						<img src="/static/images/product.jpg" class="img-responsive" alt="{{description}}">
-					</div>
 					<div class="item active">
-						<img src="/static/images/rsz_personalize-toys-bg.jpg" class="img-responsive" alt="{{description}}">
-						<img src="/static/images/cartridge2_web.jpg" class="img-responsive" alt="{{description}}">
+						<img src="/static/images/product.jpg" class="img-responsive" alt="{{description}}" width="611" height="709">
+					</div>
+					<div class="item">
+						<img src="/static/images/rsz_personalize-toys-bg_web.jpg" class="img-responsive" alt="{{description}}" width="804" height="358">
+						<img src="/static/images/cartridge2_web.jpg" class="img-responsive" alt="{{description}}" width="700" height="449">
 		        	</div>
 		        </div>
 	      	</div>
 		</div>
-
+		<!-- tools column -->
 		<div class="col-md-4 col-sm-6" id="tools">
-		
+			<!-- printer /cartridge select section -->
 			<div class="rows">
 				<div class="btn-group btn-block" data-toggle="buttons">
-					<label class="btn btn-dec btn-bkg buc btn-default col-md-6 col-xs-6 zero-border-radius" data-target="#buc" data-toggle="tab">
+					<label class="btn btn-dec btn-bkg buc btn-default col-md-6 col-xs-6 zero-border-radius active" data-target="#buc" data-toggle="tab">
 						<input type="radio" name="options" id="Buccaneer">Buccaneer</label>
-					<label class="btn btn-dec btn-bkg car btn-default col-md-6 col-xs-6 zero-border-radius active" data-target="#car" data-toggle="tab">
+					<label class="btn btn-dec btn-bkg car btn-default col-md-6 col-xs-6 zero-border-radius" data-target="#car" data-toggle="tab">
 						<input type="radio" name="options" id="Cartridges">Cartridges</label>
 				</div>
 			</div>
+			<!-- printer, cartridge buying section tab  -->
 			<div class="tab-content">
 				{% include 'printer.html' %}
 				{% include 'cartridge.html' %}
 			</div>
-
+			<!-- buy now section -->
 			<div class="rows">
 				<div class="highlight zero-border-radius">
-					<button class="btn btn-primary btn-dec btn-block" id="buy_now">Buy Now</button>
+					<button class="btn btn-primary btn-dec btn-block" id="buy_now"><i class="icon-shopping-cart icon-large"></i> Buy Now</button>
 					<p></p>
 					<p class="text-muted text-center">Made with love in Singapore</p>
 					<p class="text-center">
@@ -81,31 +77,23 @@
 		
 		</div>
 	</div>
-
+	<!-- Modal declaring for output Buynow in Json -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-        	<pre></pre>
-        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        	<div class="modal_message"></div>
-        </div>
-      </div>
-    </div>
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-body">
+	        	<pre></pre>
+	        	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        	<div class="modal_message"></div>
+	        </div>
+	      </div>
+	    </div>
   	</div>
-
-
-
 	<!--Javascript -->
-	
 	<script type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/static/js/bootstrap-select.min.js"></script>
 	<script type="text/javascript" src="/static/js/helper_functions.js"></script>
 	<script type="text/javascript" src="/static/js/base.js"></script>
-
-
-
 </body>
-
 </html>

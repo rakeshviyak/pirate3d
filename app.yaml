@@ -1,3 +1,4 @@
+# declaring the application, libraries and static path
 application: pirate3dcart
 version: 1
 runtime: python27
